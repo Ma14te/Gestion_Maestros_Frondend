@@ -1,0 +1,30 @@
+/* Minimal styles for GestioDocente frontend */
+:root{
+	--bg: #f7f7fb;
+	--card: #ffffff;
+	--muted: #6b7280;
+	--accent: #4f46e5;
+	--danger: #dc2626;
+}
+html,body{height:100%;margin:0;font-family:Inter,Segoe UI,Roboto,Arial, sans-serif;background:var(--bg);}
+header{box-shadow:0 1px 0 rgba(0,0,0,0.06);}
+main{max-width:1000px;margin:1.25rem auto;padding:1rem}
+table{background:var(--card)}
+input,button,select,textarea{font:inherit;padding:0.45rem 0.6rem;border:1px solid #e6e7ee;border-radius:6px}
+input:focus,textarea:focus{outline:2px solid color-mix(in srgb,var(--accent) 20%, transparent)}
+button{background:var(--accent);color:#fff;border:0;cursor:pointer}
+button[type="button"]{background:#6b7280}
+table{width:100%;border-collapse:collapse}
+th,td{padding:0.5rem 0.6rem;text-align:left;border-bottom:1px solid #efefef}
+th{background:#fafafa;font-weight:600}
+.small{font-size:0.9rem;color:var(--muted)}
+.actions a{margin-right:0.5rem;color:var(--accent);cursor:pointer}
+.actions a.delete{color:var(--danger)}
+
+@media (max-width:700px){
+	table,thead,tbody,tr,th,td{display:block}
+	tr{margin-bottom:0.75rem}
+	th{display:none}
+	td{border:0;padding:0.45rem;background:var(--card);}
+}
+

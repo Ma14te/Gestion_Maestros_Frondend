@@ -27,6 +27,9 @@ const angularApp = new AngularNodeAppEngine();
 /**
  * Serve static files from /browser
  */
+/**
+ * Serve static files from /browser
+ */
 app.use(
   express.static(browserDistFolder, {
     maxAge: '1y',
