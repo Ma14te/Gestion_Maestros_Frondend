@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Docente } from '../models/docente';
 
 const BASE_URL = 'http://localhost:3000/api/docentes';
@@ -13,11 +14,25 @@ export class DocentesService {
     let params = new HttpParams();
     if (filters?.q) params = params.set('q', filters.q);
     if (filters?.especialidad) params = params.set('especialidad', filters.especialidad);
-    return this.http.get<Docente[]>(BASE_URL, { params });
+    return this.http.get<any>(BASE_URL, { params }).pipe(
+      map(response => {
+        if (response && response.docentes) {
+          return response.docentes;
+        }
+        return Array.isArray(response) ? response : [];
+      })
+    );
   }
 
   getById(id: number): Observable<Docente> {
-    return this.http.get<Docente>(`${BASE_URL}/${id}`);
+    return this.http.get<any>(`${BASE_URL}/${id}`).pipe(
+      map(response => {
+        if (response && response.docente) {
+          return response.docente;
+        }
+        return response;
+      })
+    );
   }
 
   create(docente: Docente): Observable<any> {

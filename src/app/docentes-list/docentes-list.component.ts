@@ -13,8 +13,8 @@ import { Docente } from '../models/docente';
     <section class="card">
       <div class="header-actions">
         <div class="search-group">
-          <input class="form-input" placeholder="Buscar (nombre, apellidos, correo)" [(ngModel)]="q" />
-          <input class="form-input" placeholder="Especialidad" [(ngModel)]="especialidad" />
+          <input class="form-input" placeholder="Buscar (nombre, apellidos, correo)" [(ngModel)]="q" (keyup.enter)="search()" />
+          <input class="form-input" placeholder="Especialidad" [(ngModel)]="especialidad" (keyup.enter)="search()" />
         </div>
         <div class="button-group">
           <button class="btn btn-primary" (click)="search()">Buscar</button>
@@ -174,6 +174,7 @@ export class DocentesListComponent implements OnInit {
   }
 
   search() {
+    console.log('Searching with:', { q: this.q, especialidad: this.especialidad });
     this.load();
   }
 
